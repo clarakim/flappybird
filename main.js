@@ -76,6 +76,7 @@ var main_state = {
 
     // Kill the pipe when it's no longer visible 
     pipe.outOfBoundsKill = true;
+},
 
     add_row_of_pipes: function() {  
     var hole = Math.floor(Math.random()*5)+1;
@@ -85,7 +86,6 @@ var main_state = {
             this.add_one_pipe(400, i*60+10);   
 },
 
-},
 
 };
 
