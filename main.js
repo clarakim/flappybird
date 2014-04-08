@@ -17,7 +17,7 @@ var main_state = {
      this.game.load.image('pipe', 'assets/pipe.png');
 
      //add sound 
-     //this.game.load.audio('jump', 'assets/jump.wav');  
+     this.game.load.audio('jump', 'assets/jump.wav');  
 		
     },
 
@@ -27,10 +27,16 @@ var main_state = {
       //Display the bird on the screen
       this.bird = this.game.add.sprite (100, 245, 'bird')
 
+
       // Add gravity to the bird to make it fall
       this.bird.body.gravity.y= 1000;
       //anchor (center of rotation) 
       this.bird.anchor.setTo(-0.2, 0.5);  
+
+      //jump sound 
+      this.jump_sound = this.game.add.audio('jump');  
+
+
 
       // Call the 'jump' function when the spacekey is hit
       var space_key =
@@ -102,6 +108,8 @@ var main_state = {
 
     // And start the animation
     animation.start();  
+
+    this.jump_sound.play();  
 
     },
 
