@@ -63,7 +63,7 @@ var main_state = {
 
     jump: function() {  
     // Add a vertical velocity to the bird
-    this.bird.body.velocity.y = -350;
+    this.bird.body.velocity.y = -290;
 
     // create an animation on the bird  
     var animation = 
