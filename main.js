@@ -26,6 +26,8 @@ var main_state = {
 
       // Add gravity to the bird to make it fall
       this.bird.body.gravity.y= 1000;
+      //anchor (center of rotation) 
+      this.bird.anchor.setTo(-0.2, 0.5);  
 
       // Call the 'jump' function when the spacekey is hit
       var space_key =
@@ -54,13 +56,27 @@ var main_state = {
       this.game.physics.overlap(this.bird, this.pipes,
       this.restart_game, null, this);
 
+      if (this.bird.angle < 20)
+        this.bird.angle += 1;
     },
     // Make the bird jump
 
     jump: function() {  
     // Add a vertical velocity to the bird
     this.bird.body.velocity.y = -350;
+
+    // create an animation on the bird  
+    var animation = 
+    this.game.add.tween(this.bird);
+
+    // Set the animation to change the angle of the sprite to -20° in 100 milliseconds
+    animation.to({angle: -20}, 100);
+
+    // And start the animation
+    animation.start();  
+
     },
+
 
     // Restart the game
     restart_game: function() {  
