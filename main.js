@@ -38,6 +38,10 @@ var main_state = {
 
       this.timer = this.game.time.events.loop(1500, this.add_row_of_pipes, this);  
 
+      this.score= 0;
+      var style = {font: "30px Arial", fill: "#ffffff" };
+      this.label_score = this.game.add.text(20,20, "0", style);
+
     },
     
     update: function() {
@@ -45,6 +49,10 @@ var main_state = {
       //If the bird is out of the world (too high or too low), call the 'restart_game' function
       if (this.bird.inWorld == false)
         this.restart_game();
+
+      //restart game when bird collides with a pipe
+      this.game.physics.overlap(this.bird, this.pipes,
+      this.restart_game, null, this);
 
     },
     // Make the bird jump
@@ -69,7 +77,7 @@ var main_state = {
     var pipe = this.pipes.getFirstDead();
 
     // Set the new position of the pipe
-    pipe.reset(x, y);
+    pipe.reset(x,y);
 
     // Add velocity to the pipe to make it move left
     pipe.body.velocity.x = -200; 
@@ -80,6 +88,9 @@ var main_state = {
 
     add_row_of_pipes: function() {  
     var hole = Math.floor(Math.random()*5)+1;
+
+    this.score += 1; 
+    this.label_score.content = this.score; 
 
     for (var i = 0; i < 8; i++)
         if (i != hole && i != hole +1) 
