@@ -11,7 +11,7 @@ var main_state = {
      this.game.stage.backgroundColor = '#71c5cf'; 
 
      // Load the bird sprite
-     this.game.load.image ('bird', 'assets/angry-bird-icon.png');
+     this.game.load.image ('bird','assets/angry-bird-icon.png');
 
      // Load the pipe sprite 
      this.game.load.image('pipe', 'assets/pipe.png');
@@ -21,7 +21,7 @@ var main_state = {
     create: function() { 
     	// Fuction called after 'preload' to setup the game    
  
-      //Disply the bird on the screen
+      //Display the bird on the screen
       this.bird = this.game.add.sprite (100, 245, 'bird')
 
       // Add gravity to the bird to make it fall
