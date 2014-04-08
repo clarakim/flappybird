@@ -15,6 +15,9 @@ var main_state = {
 
      // Load the pipe sprite 
      this.game.load.image('pipe', 'assets/pipe.png');
+
+     //add sound 
+     //this.game.load.audio('jump', 'assets/jump.wav');  
 		
     },
 
@@ -54,14 +57,39 @@ var main_state = {
 
       //restart game when bird collides with a pipe
       this.game.physics.overlap(this.bird, this.pipes,
-      this.restart_game, null, this);
+      this.hit_pipe, null, this);
 
+       // If the bird has already hit a pipe, we have nothing to do
       if (this.bird.angle < 20)
         this.bird.angle += 1;
+
+
     },
+
+    hit_pipe: function() {
+      if (this.bird.alive == false)
+        return;
+      // Set the alive property of the bird to false
+       this.bird.alive = false; 
+
+      // Prevent new pipes from appearing
+      this.game.time.events.remove(this.timer)
+
+      // Go through all the pipes, and stop their movement
+      this.pipes.forEachAlive(function(p){
+      p.body.velocity.x = 0;
+      }, this);
+      },
+
+    
+
     // Make the bird jump
 
     jump: function() {  
+
+    if (this.bird.alive == false)  
+    return;   
+
     // Add a vertical velocity to the bird
     this.bird.body.velocity.y = -290;
 
