@@ -37,7 +37,7 @@ var play_state = {
         if (this.bird.alive == false)
             return; 
 
-        this.bird.body.velocity.y = -350;
+        this.bird.body.velocity.y = -290;
         this.game.add.tween(this.bird).to({angle: -20}, 100).start();
         this.jump_sound.play();
     },
