@@ -15,9 +15,10 @@ preload: function() {
      //add sound 
      this.game.load.audio('jump', 'assets/jump.wav');  
     
-    }
+    },
 
     create: function () {
         //when all assets are loaded, go to the 'menu' state 
         this.game.state.start('menu');
     }
+};
