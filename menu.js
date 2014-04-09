@@ -4,7 +4,7 @@ var menu_state = {
     
     var space_key = 
   this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    space_key.onDown.add(this.start.this);
+    space_key.onDown.add(this.start, this);
 
     // Defining variables
     var style = { font: "30px Arial", fill: "#ffffff" };
@@ -26,6 +26,5 @@ var menu_state = {
    // Start the actual game
     start: function() {
         this.game.state.start('play');
-    }
-};
+    }, };
 
